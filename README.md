@@ -2,14 +2,14 @@
 
 A comprehensive Natural Language Processing project for analyzing sentiment and discovering topics in social media data. This project processes 31,962 tweets to extract insights about brand perception, customer sentiment, and emerging trends using advanced NLP techniques, machine learning models, and deep learning architectures.
 
-## 📊 Dataset
+##  Dataset
 
 - **Size**: 31,962 tweets
 - **Features**: 6 features
 - **Target Variable**: Sentiment (positive, negative, neutral, irrelevant)
 - **Source**: Twitter Sentiment Analysis Dataset
 
-## 🎯 Features
+## Features
 
 This project implements six major components:
 
@@ -20,7 +20,7 @@ This project implements six major components:
 5. **Deep Learning Models** - Transformer-based and neural network architectures
 6. **Streamlit Dashboard** - Real-time sentiment analysis and visualization interface
 
-## 📋 Requirements
+## Requirements
 
 ### Prerequisites
 
@@ -41,7 +41,7 @@ The project uses the following key libraries:
 - **Data Processing**: pandas, numpy
 - **Utilities**: tqdm, joblib
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 # Clone the repository
@@ -58,7 +58,7 @@ streamlit run app.py
 jupyter notebook Complete_project.ipynb
 ```
 
-## 🚀 Installation
+## Installation
 
 ### Step 1: Clone the Repository
 
@@ -198,7 +198,7 @@ The dashboard will open in your browser at `http://localhost:8501`
 - Topic assignment using LDA model
 - Interactive text input and analysis
 
-## 📖 Detailed Feature Documentation
+## Detailed Feature Documentation
 
 ### 1. Data Preprocessing Pipeline
 
@@ -314,17 +314,17 @@ The dashboard will open in your browser at `http://localhost:8501`
 
 **Output**: Interactive web dashboard with real-time sentiment and topic predictions
 
-## 📈 Results & Performance
+## Results & Performance
 
-### 🏆 Model Performance Overview
+### Model Performance Overview
 
 Validation set performance on **999 samples**:
 
-#### 🥇 Top Performers
+#### Top Performers
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    🥇 BEST OVERALL MODEL                     │
+│                    BEST OVERALL MODEL                       │
 ├─────────────────────────────────────────────────────────────┤
 │  DistilBERT (Fine-tuned)                                    │
 │  ════════════════════════════════════════════════ 97.0%     │
@@ -333,46 +333,46 @@ Validation set performance on **999 samples**:
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
-│              🥈 BEST TRADITIONAL ML MODEL                    │
+│              BEST TRADITIONAL ML MODEL                      │
 ├─────────────────────────────────────────────────────────────┤
-│  Random Forest                                               │
+│  Random Forest                                              │
 │  ════════════════════════════════════════════ 96.0%         │
-│  🎯 Validation Accuracy: 96.0%                             │
+│  🎯 Validation Accuracy: 96.0%                              │
 │  📊 Cross-Validation: 87.16% | F1-Score: 0.96               │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-#### 📊 Complete Model Comparison
+#### Complete Model Comparison
 
 <details>
-<summary><b>📈 Click to view detailed performance metrics</b></summary>
+<summary><b>Click to view detailed performance metrics</b></summary>
 
-##### 🧠 Deep Learning Models
+##### Deep Learning Models
 
 | Model | Validation Accuracy | Visual Progress | Status |
 |-------|---------------------|-----------------|--------|
-| **🤖 DistilBERT** | **97.0%** | `████████████████████████████████████░░` | ⭐ Best |
-| **🔄 LSTM** | **96.4%** | `███████████████████████████████████░░░` | ✅ Excellent |
-| **🎯 CNN** | **95.4%** | `██████████████████████████████████░░░░` | ✅ Excellent |
+| **DistilBERT** | **97.0%** | `████████████████████████████████████░░` | Best |
+| **LSTM** | **96.4%** | `███████████████████████████████████░░░` | Excellent |
+| **CNN** | **95.4%** | `██████████████████████████████████░░░░` | Excellent |
 
-##### 📚 Traditional Machine Learning Models
+##### Traditional Machine Learning Models
 
 | Model | CV Accuracy | Validation Accuracy | Visual Progress | Status |
 |-------|------------|---------------------|-----------------|--------|
-| **🌲 Random Forest** | 87.16% | **96.0%** | `███████████████████████████████████░░░` | ⭐ Best ML |
-| **📊 SVM (Linear)** | 77.00% | - | `████████████████████░░░░░░░░░░░░░░░░` | ⚠️ Baseline |
-| **📉 Logistic Regression** | 72.10% | - | `███████████████░░░░░░░░░░░░░░░░░░░░░` | ⚠️ Baseline |
+| **Random Forest** | 87.16% | **96.0%** | `███████████████████████████████████░░░` | Best ML |
+| **SVM (Linear)** | 77.00% | - | `████████████████████░░░░░░░░░░░░░░░░` | Baseline |
+| **Logistic Regression** | 72.10% | - | `███████████████░░░░░░░░░░░░░░░░░░░░░` | Baseline |
 
 </details>
 
-#### 📈 Performance Visualization
+#### Performance Visualization
 
 ```
 Accuracy Comparison (Validation Set)
 
-DistilBERT      ████████████████████████████████████ 97.0% 🥇
-LSTM            ███████████████████████████████████░ 96.4% 🥈
-Random Forest    ███████████████████████████████████░ 96.0% 🥉
+DistilBERT      ████████████████████████████████████ 97.0%
+LSTM            ███████████████████████████████████░ 96.4% 
+Random Forest   ███████████████████████████████████░ 96.0% 
 CNN             ██████████████████████████████████░░ 95.4%
 SVM             █████████████████░░░░░░░░░░░░░░░░░░ 77.0%
 Logistic Reg    ██████████████░░░░░░░░░░░░░░░░░░░░░░ 72.1%
@@ -381,31 +381,31 @@ Logistic Reg    ██████████████░░░░░░░�
                 70%        80%        90%        100%
 ```
 
-#### 🎯 Key Performance Insights
+#### Key Performance Insights
 
 <div align="center">
 
 | Metric | DistilBERT | Random Forest | LSTM | CNN |
 |:------:|:----------:|:-------------:|:----:|:---:|
-| **Accuracy** | 🟢 **97.0%** | 🟢 **96.0%** | 🟢 **96.4%** | 🟢 **95.4%** |
-| **Precision** | 🟢 **0.98** | 🟢 **0.96** | - | - |
-| **Recall** | 🟢 **0.97** | 🟢 **0.96** | - | - |
-| **F1-Score** | 🟢 **0.97** | 🟢 **0.96** | - | - |
+| **Accuracy** |  **97.0%** |  **96.0%** | **96.4%** | **95.4%** |
+| **Precision** |  **0.98** |  **0.96** | - | - |
+| **Recall** |  **0.97** |  **0.96** | - | - |
+| **F1-Score** |  **0.97** |  **0.96** | - | - |
 
 </div>
 
-**🏅 Performance Highlights:**
+**Performance Highlights:**
 - ✅ **DistilBERT** leads with **97.0%** accuracy - best overall performance
 - ✅ **LSTM** achieves **96.4%** - excellent sequence modeling
 - ✅ **Random Forest** reaches **96.0%** - best traditional ML approach
 - ✅ **CNN** performs at **95.4%** - strong feature extraction
-- 📊 All deep learning models outperform traditional ML baseline models
-- ⚖️ All models trained with class balancing for fair evaluation
+- All deep learning models outperform traditional ML baseline models
+- All models trained with class balancing for fair evaluation
 
-#### 📋 Detailed Classification Reports
+#### Detailed Classification Reports
 
 <details>
-<summary><b>🔍 Random Forest - Best Traditional ML Model</b></summary>
+<summary><b> Random Forest - Best Traditional ML Model</b></summary>
 
 ```
 Classification Report (Validation Set: 999 samples)
@@ -426,7 +426,7 @@ Weighted Avg     ████████░░   0.96      0.96      0.96
 </details>
 
 <details>
-<summary><b>🔍 DistilBERT - Best Overall Model</b></summary>
+<summary><b> DistilBERT - Best Overall Model</b></summary>
 
 ```
 Classification Report (Validation Set: 999 samples)
@@ -464,7 +464,7 @@ The project generates several visualization files:
 - `gensim_lda_model.pkl` - Trained LDA topic model (15-20 topics)
 - `gensim_dictionary.pkl` - Gensim dictionary for topic modeling
 
-## 🔧 Model Files
+## Model Files
 
 The project uses the following pre-trained models:
 
@@ -474,7 +474,7 @@ The project uses the following pre-trained models:
 
 **Note**: For the Streamlit app to work, ensure these model files are in the root directory. The DistilBERT model file (`distilbert_sentiment_classifier.pt`) should be present for the app to load the fine-tuned transformer model.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
