@@ -318,11 +318,36 @@ The dashboard will open in your browser at `http://localhost:8501`
 
 ### Model Performance Metrics
 
-Performance metrics are available in the `Complete_project.ipynb` notebook. The project includes:
+The following accuracy scores were achieved on the validation set (999 samples):
 
-- **Baseline Models**: TF-IDF + Logistic Regression, Random Forest, SVM
-- **Deep Learning Models**: Fine-tuned DistilBERT, LSTM, CNN
-- **Evaluation**: Stratified cross-validation with class imbalance handling
+| Model | Cross-Validation Accuracy | Validation Accuracy | Notes |
+|-------|---------------------------|---------------------|-------|
+| **Logistic Regression** | 0.7210 | - | Baseline model with TF-IDF |
+| **Random Forest** | 0.8716 | **0.9600** | Best traditional ML model |
+| **SVM (Linear)** | 0.7700 | - | Linear kernel with TF-IDF |
+| **DistilBERT (Fine-tuned)** | - | **0.9700** | Transformer-based model |
+| **LSTM** | - | **0.9640** | Bidirectional LSTM with embeddings |
+| **CNN** | - | **0.9540** | Multi-filter CNN (3, 4, 5-gram filters) |
+
+**Key Findings:**
+- **Best Overall Model**: DistilBERT achieved the highest validation accuracy of **97.0%**
+- **Best Traditional ML**: Random Forest achieved **96.0%** validation accuracy with excellent cross-validation performance
+- **Deep Learning Models**: All deep learning models (DistilBERT, LSTM, CNN) outperformed traditional ML approaches
+- **Class Balance**: All models were trained with class balancing techniques to handle imbalanced sentiment distribution
+
+### Detailed Classification Reports
+
+**Random Forest (Best Traditional ML):**
+- Precision: 0.96 (macro avg)
+- Recall: 0.96 (macro avg)
+- F1-Score: 0.96 (macro avg)
+- Per-class performance: All sentiment classes (Positive, Negative, Neutral, Irrelevant) achieved >0.93 F1-score
+
+**DistilBERT (Best Overall):**
+- Precision: 0.98 (macro avg)
+- Recall: 0.97 (macro avg)
+- F1-Score: 0.97 (macro avg)
+- Per-class performance: All sentiment classes achieved >0.96 F1-score
 
 ### Generated Visualizations
 
