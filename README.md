@@ -316,38 +316,135 @@ The dashboard will open in your browser at `http://localhost:8501`
 
 ## 📈 Results & Performance
 
-### Model Performance Metrics
+### 🏆 Model Performance Overview
 
-The following accuracy scores were achieved on the validation set (999 samples):
+Validation set performance on **999 samples**:
 
-| Model | Cross-Validation Accuracy | Validation Accuracy | Notes |
-|-------|---------------------------|---------------------|-------|
-| **Logistic Regression** | 0.7210 | - | Baseline model with TF-IDF |
-| **Random Forest** | 0.8716 | **0.9600** | Best traditional ML model |
-| **SVM (Linear)** | 0.7700 | - | Linear kernel with TF-IDF |
-| **DistilBERT (Fine-tuned)** | - | **0.9700** | Transformer-based model |
-| **LSTM** | - | **0.9640** | Bidirectional LSTM with embeddings |
-| **CNN** | - | **0.9540** | Multi-filter CNN (3, 4, 5-gram filters) |
+#### 🥇 Top Performers
 
-**Key Findings:**
-- **Best Overall Model**: DistilBERT achieved the highest validation accuracy of **97.0%**
-- **Best Traditional ML**: Random Forest achieved **96.0%** validation accuracy with excellent cross-validation performance
-- **Deep Learning Models**: All deep learning models (DistilBERT, LSTM, CNN) outperformed traditional ML approaches
-- **Class Balance**: All models were trained with class balancing techniques to handle imbalanced sentiment distribution
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    🥇 BEST OVERALL MODEL                     │
+├─────────────────────────────────────────────────────────────┤
+│  DistilBERT (Fine-tuned)                                    │
+│  ════════════════════════════════════════════════ 97.0%     │
+│  🎯 Validation Accuracy: 97.0%                              │
+│  📊 Precision: 0.98 | Recall: 0.97 | F1-Score: 0.97         │
+└─────────────────────────────────────────────────────────────┘
 
-### Detailed Classification Reports
+┌─────────────────────────────────────────────────────────────┐
+│              🥈 BEST TRADITIONAL ML MODEL                    │
+├─────────────────────────────────────────────────────────────┤
+│  Random Forest                                               │
+│  ════════════════════════════════════════════ 96.0%         │
+│  🎯 Validation Accuracy: 96.0%                             │
+│  📊 Cross-Validation: 87.16% | F1-Score: 0.96               │
+└─────────────────────────────────────────────────────────────┘
+```
 
-**Random Forest (Best Traditional ML):**
-- Precision: 0.96 (macro avg)
-- Recall: 0.96 (macro avg)
-- F1-Score: 0.96 (macro avg)
-- Per-class performance: All sentiment classes (Positive, Negative, Neutral, Irrelevant) achieved >0.93 F1-score
+#### 📊 Complete Model Comparison
 
-**DistilBERT (Best Overall):**
-- Precision: 0.98 (macro avg)
-- Recall: 0.97 (macro avg)
-- F1-Score: 0.97 (macro avg)
-- Per-class performance: All sentiment classes achieved >0.96 F1-score
+<details>
+<summary><b>📈 Click to view detailed performance metrics</b></summary>
+
+##### 🧠 Deep Learning Models
+
+| Model | Validation Accuracy | Visual Progress | Status |
+|-------|---------------------|-----------------|--------|
+| **🤖 DistilBERT** | **97.0%** | `████████████████████████████████████░░` | ⭐ Best |
+| **🔄 LSTM** | **96.4%** | `███████████████████████████████████░░░` | ✅ Excellent |
+| **🎯 CNN** | **95.4%** | `██████████████████████████████████░░░░` | ✅ Excellent |
+
+##### 📚 Traditional Machine Learning Models
+
+| Model | CV Accuracy | Validation Accuracy | Visual Progress | Status |
+|-------|------------|---------------------|-----------------|--------|
+| **🌲 Random Forest** | 87.16% | **96.0%** | `███████████████████████████████████░░░` | ⭐ Best ML |
+| **📊 SVM (Linear)** | 77.00% | - | `████████████████████░░░░░░░░░░░░░░░░` | ⚠️ Baseline |
+| **📉 Logistic Regression** | 72.10% | - | `███████████████░░░░░░░░░░░░░░░░░░░░░` | ⚠️ Baseline |
+
+</details>
+
+#### 📈 Performance Visualization
+
+```
+Accuracy Comparison (Validation Set)
+
+DistilBERT      ████████████████████████████████████ 97.0% 🥇
+LSTM            ███████████████████████████████████░ 96.4% 🥈
+Random Forest    ███████████████████████████████████░ 96.0% 🥉
+CNN             ██████████████████████████████████░░ 95.4%
+SVM             █████████████████░░░░░░░░░░░░░░░░░░ 77.0%
+Logistic Reg    ██████████████░░░░░░░░░░░░░░░░░░░░░░ 72.1%
+
+                └────────────────────────────────────┘
+                70%        80%        90%        100%
+```
+
+#### 🎯 Key Performance Insights
+
+<div align="center">
+
+| Metric | DistilBERT | Random Forest | LSTM | CNN |
+|:------:|:----------:|:-------------:|:----:|:---:|
+| **Accuracy** | 🟢 **97.0%** | 🟢 **96.0%** | 🟢 **96.4%** | 🟢 **95.4%** |
+| **Precision** | 🟢 **0.98** | 🟢 **0.96** | - | - |
+| **Recall** | 🟢 **0.97** | 🟢 **0.96** | - | - |
+| **F1-Score** | 🟢 **0.97** | 🟢 **0.96** | - | - |
+
+</div>
+
+**🏅 Performance Highlights:**
+- ✅ **DistilBERT** leads with **97.0%** accuracy - best overall performance
+- ✅ **LSTM** achieves **96.4%** - excellent sequence modeling
+- ✅ **Random Forest** reaches **96.0%** - best traditional ML approach
+- ✅ **CNN** performs at **95.4%** - strong feature extraction
+- 📊 All deep learning models outperform traditional ML baseline models
+- ⚖️ All models trained with class balancing for fair evaluation
+
+#### 📋 Detailed Classification Reports
+
+<details>
+<summary><b>🔍 Random Forest - Best Traditional ML Model</b></summary>
+
+```
+Classification Report (Validation Set: 999 samples)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Class          Precision    Recall    F1-Score    Support
+─────────────────────────────────────────────────────────────
+Irrelevant      ████████░░   0.94      0.96      0.95        172
+Negative        ████████░░   0.96      0.97      0.96        265
+Neutral         █████████░   0.99      0.93      0.96        285
+Positive        ████████░░   0.95      0.98      0.96        277
+─────────────────────────────────────────────────────────────
+Accuracy                                   0.96       999
+Macro Avg        ████████░░   0.96      0.96      0.96
+Weighted Avg     ████████░░   0.96      0.96      0.96
+```
+
+</details>
+
+<details>
+<summary><b>🔍 DistilBERT - Best Overall Model</b></summary>
+
+```
+Classification Report (Validation Set: 999 samples)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Class          Precision    Recall    F1-Score    Support
+─────────────────────────────────────────────────────────────
+Irrelevant      █████████░   0.98      0.97      0.97        172
+Negative        █████████░   0.97      0.97      0.97        265
+Neutral         █████████░   0.97      0.99      0.98        285
+Positive        █████████░   0.98      0.96      0.97        277
+─────────────────────────────────────────────────────────────
+Accuracy                                   0.97       999
+Macro Avg        █████████░   0.98      0.97      0.97
+Weighted Avg     █████████░   0.98      0.97      0.97
+```
+
+</details>
 
 ### Generated Visualizations
 
