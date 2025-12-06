@@ -6,7 +6,7 @@ A comprehensive Natural Language Processing project for analyzing sentiment and 
 
 - **Size**: 31,962 tweets
 - **Features**: 6 features
-- **Target Variable**: Sentiment (positive, negative, neutral)
+- **Target Variable**: Sentiment (positive, negative, neutral, irrelevant)
 - **Source**: Twitter Sentiment Analysis Dataset
 
 ## 🎯 Features
@@ -33,20 +33,37 @@ This project implements six major components:
 
 The project uses the following key libraries:
 
-- **NLP & Text Processing**: NLTK, spaCy
-- **Machine Learning**: scikit-learn, XGBoost
-- **Deep Learning**: PyTorch or TensorFlow, Transformers (Hugging Face)
-- **Visualization**: Matplotlib, Seaborn, Plotly, pyLDAvis
+- **NLP & Text Processing**: NLTK, Gensim
+- **Machine Learning**: scikit-learn, imbalanced-learn
+- **Deep Learning**: PyTorch, TensorFlow, Transformers (Hugging Face)
+- **Visualization**: Matplotlib, Seaborn, pyLDAvis
 - **Web Framework**: Streamlit
 - **Data Processing**: pandas, numpy
 - **Utilities**: tqdm, joblib
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/omr-ql/NLP_Social-Media-Sentiment.git
+cd NLP_Social-Media-Sentiment
+
+# Install dependencies
+pip install pandas numpy matplotlib seaborn nltk scikit-learn imbalanced-learn streamlit transformers torch gensim pyLDAvis joblib
+
+# Run the Streamlit dashboard
+streamlit run app.py
+
+# Or open the complete project notebook
+jupyter notebook Complete_project.ipynb
+```
 
 ## 🚀 Installation
 
 ### Step 1: Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/omr-ql/NLP_Social-Media-Sentiment.git
 cd NLP_Social-Media-Sentiment
 ```
 
@@ -69,6 +86,17 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+If `requirements.txt` is not available, install the core dependencies:
+
+```bash
+pip install pandas numpy matplotlib seaborn nltk scikit-learn imbalanced-learn streamlit transformers torch tensorflow gensim pyLDAvis joblib
+```
+
+For PyTorch with CUDA support (optional):
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu130
+```
+
 ### Step 4: Download NLTK Data
 
 ```python
@@ -76,70 +104,46 @@ import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
+nltk.download('omw-1.4')
 nltk.download('averaged_perceptron_tagger')
+nltk.download('averaged_perceptron_tagger_eng')
 ```
 
-### Step 5: Download Dataset
+**Note**: The notebooks will automatically download these resources if they're not already present.
 
-Place your dataset file (`twitter_sentiment.csv` or similar) in the `data/` directory.
+### Step 5: Verify Dataset
+
+The dataset files (`twitter_training.csv` and `twitter_validation.csv`) are already included in the repository.
 
 ## 📁 Project Structure
 
 ```
 NLP_Social-Media-Sentiment/
 │
-├── data/
-│   ├── raw/                    # Raw dataset files
-│   ├── processed/              # Cleaned and preprocessed data
-│   └── models/                 # Saved model files
-│
-├── src/
-│   ├── preprocessing/
-│   │   ├── text_cleaner.py     # Text cleaning utilities
-│   │   ├── tokenizer.py        # Tokenization with NLTK TweetTokenizer
-│   │   ├── lemmatizer.py       # POS-tagged lemmatization
-│   │   └── feature_extractor.py # Hashtag and mention extraction
-│   │
-│   ├── eda/
-│   │   ├── sentiment_analysis.py    # Sentiment distribution analysis
-│   │   ├── word_frequency.py         # Word frequency and n-grams
-│   │   ├── network_analysis.py      # Retweet and mention networks
-│   │   ├── temporal_analysis.py      # Time series sentiment trends
-│   │   └── geographic_mapping.py     # Geographic sentiment visualization
-│   │
-│   ├── supervised_ml/
-│   │   ├── baseline_model.py        # TF-IDF + Logistic Regression
-│   │   ├── random_forest.py         # Random Forest with n-grams
-│   │   ├── svm_classifier.py        # SVM with linear kernel
-│   │   └── evaluation.py            # Cross-validation and metrics
-│   │
-│   ├── unsupervised_ml/
-│   │   ├── lda_modeling.py          # Latent Dirichlet Allocation
-│   │   ├── kmeans_clustering.py     # KMeans on TF-IDF vectors
-│   │   ├── nmf_decomposition.py     # Non-negative Matrix Factorization
-│   │   └── topic_visualization.py   # pyLDAvis interactive visualization
-│   │
-│   ├── deep_learning/
-│   │   ├── distilbert_finetune.py   # Fine-tuned DistilBERT
-│   │   ├── lstm_model.py            # LSTM with embeddings
-│   │   ├── cnn_classifier.py        # CNN with multiple filter sizes
-│   │   └── attention_mechanism.py   # Attention-based models
-│   │
-│   └── streamlit_app/
-│       ├── app.py                   # Main Streamlit application
-│       ├── components/
-│       │   ├── sentiment_input.py   # Real-time text input
-│       │   ├── topic_display.py     # Topic assignment display
-│       │   ├── trend_visualization.py # Plotly trend charts
-│       │   ├── alert_system.py      # Negative sentiment alerts
-│       │   └── export_tools.py     # Report export functionality
+├── app.py                          # Streamlit dashboard application
 │
 ├── notebooks/
-│   ├── 01_data_preprocessing.ipynb
-│   ├── 02_exploratory_analysis.ipynb
-│   ├── 03_supervised_ml.ipynb
-│   ├── 04_unsupervised_ml.ipynb
-│   └── 05_deep_learning.ipynb
+│   ├── Complete_project.ipynb      # Complete end-to-end project notebook
+│   ├── final_project.ipynb         # Final project implementation
+│   └── unsupervized-final (2).ipynb # Unsupervised learning notebook
+│
+├── models/
+│   ├── best_sentiment_classifier.pkl    # Best trained sentiment classifier
+│   ├── gensim_lda_model.pkl            # Gensim LDA topic model
+│   └── gensim_dictionary.pkl           # Gensim dictionary for topic modeling
+│
+├── data/
+│   ├── twitter_training.csv        # Training dataset (31,962 tweets)
+│   └── twitter_validation.csv      # Validation dataset
+│
+├── visualizations/                 # Generated visualization files
+│   ├── sentiment_distribution.png
+│   ├── sentiment_by_entity.png
+│   ├── entity_distribution.png
+│   ├── tweet_length_distribution.png
+│   ├── top_mentions.png
+│   ├── top_1_1grams_*.png          # Word frequency by sentiment
+│   └── top_2_2grams_*.png          # Bigram frequency by sentiment
 │
 ├── requirements.txt
 ├── README.md
@@ -148,108 +152,51 @@ NLP_Social-Media-Sentiment/
 
 ## 💻 Usage Guide
 
-### Data Preprocessing
+### Running the Complete Project Notebook
 
-```python
-from src.preprocessing.text_cleaner import TextCleaner
-from src.preprocessing.tokenizer import TweetTokenizer
-from src.preprocessing.lemmatizer import POSLemmatizer
-from src.preprocessing.feature_extractor import FeatureExtractor
-
-# Initialize components
-cleaner = TextCleaner()
-tokenizer = TweetTokenizer()
-lemmatizer = POSLemmatizer()
-extractor = FeatureExtractor()
-
-# Process tweets
-cleaned_text = cleaner.clean(tweet)
-tokens = tokenizer.tokenize(cleaned_text)
-lemmatized = lemmatizer.lemmatize(tokens)
-hashtags, mentions = extractor.extract_features(tweet)
-```
-
-### Exploratory Data Analysis
+The main project implementation is in `Complete_project.ipynb`, which contains all the analysis from preprocessing to model training:
 
 ```bash
-# Run EDA notebook
-jupyter notebook notebooks/02_exploratory_analysis.ipynb
-
-# Or run Python script
-python src/eda/sentiment_analysis.py
+# Launch Jupyter Notebook
+jupyter notebook Complete_project.ipynb
 ```
 
-### Supervised Machine Learning
+This notebook includes:
+- Data preprocessing with NLTK TweetTokenizer and POS-tagged lemmatization
+- Exploratory data analysis with visualizations
+- Supervised ML models (Logistic Regression, Random Forest, SVM)
+- Unsupervised ML (LDA, KMeans, NMF)
+- Deep Learning models (DistilBERT, LSTM, CNN)
 
-```python
-from src.supervised_ml.baseline_model import BaselineModel
-from src.supervised_ml.random_forest import RandomForestClassifier
-from src.supervised_ml.svm_classifier import SVMClassifier
+### Running Individual Notebooks
 
-# Train baseline model
-baseline = BaselineModel()
-baseline.train(X_train, y_train)
-baseline.evaluate(X_test, y_test)
+```bash
+# Final project notebook (supervised learning focus)
+jupyter notebook final_project.ipynb
 
-# Train Random Forest
-rf_model = RandomForestClassifier()
-rf_model.train(X_train, y_train)
-
-# Train SVM
-svm_model = SVMClassifier()
-svm_model.train(X_train, y_train)
-```
-
-### Unsupervised Machine Learning
-
-```python
-from src.unsupervised_ml.lda_modeling import LDAModel
-from src.unsupervised_ml.kmeans_clustering import KMeansClustering
-from src.unsupervised_ml.nmf_decomposition import NMFModel
-
-# LDA Topic Modeling
-lda = LDAModel(n_topics=15)
-lda.fit(tfidf_vectors)
-topics = lda.get_topics()
-
-# KMeans Clustering
-kmeans = KMeansClustering(n_clusters=10)
-clusters = kmeans.fit_predict(tfidf_vectors)
-
-# NMF Decomposition
-nmf = NMFModel(n_components=15)
-nmf.fit(tfidf_vectors)
-```
-
-### Deep Learning
-
-```python
-from src.deep_learning.distilbert_finetune import DistilBERTFineTuner
-from src.deep_learning.lstm_model import LSTMSentimentClassifier
-from src.deep_learning.cnn_classifier import CNNSentimentClassifier
-
-# Fine-tune DistilBERT
-bert_model = DistilBERTFineTuner()
-bert_model.train(train_loader, val_loader)
-predictions = bert_model.predict(test_data)
-
-# Train LSTM
-lstm_model = LSTMSentimentClassifier()
-lstm_model.train(X_train, y_train)
-
-# Train CNN
-cnn_model = CNNSentimentClassifier()
-cnn_model.train(X_train, y_train)
+# Unsupervised learning notebook (topic modeling)
+jupyter notebook unsupervized-final\ \(2\).ipynb
 ```
 
 ### Streamlit Dashboard
 
+Launch the interactive sentiment analysis dashboard:
+
 ```bash
-# Launch the Streamlit app
-streamlit run src/streamlit_app/app.py
+# Make sure you have the model files in the root directory:
+# - distilbert_sentiment_classifier.pt (or best_sentiment_classifier.pkl)
+# - gensim_lda_model.pkl
+# - gensim_dictionary.pkl
+
+streamlit run app.py
 ```
 
 The dashboard will open in your browser at `http://localhost:8501`
+
+**Features:**
+- Real-time sentiment prediction for tweet text
+- Topic assignment using LDA model
+- Interactive text input and analysis
 
 ## 📖 Detailed Feature Documentation
 
@@ -353,68 +300,57 @@ The dashboard will open in your browser at `http://localhost:8501`
 **Purpose**: Real-time sentiment analysis interface for social media managers.
 
 **Key Features**:
-- **Real-time Text Input**: Instant sentiment prediction for user-entered text
-- **Topic Assignment**: Automatic topic labeling for input text
-- **Similar Content Display**: Show tweets with similar sentiment/topics
-- **Sentiment Trend Visualization**: Interactive Plotly charts showing sentiment over time
-- **Alert System**: Notifications for negative sentiment spikes or anomalies
-- **Export Capabilities**: Generate PDF/CSV reports for social media analysis
+- **Real-time Text Input**: Instant sentiment prediction for user-entered text using fine-tuned DistilBERT
+- **Topic Assignment**: Automatic topic labeling using Gensim LDA model
+- **Preprocessing Pipeline**: Integrated text cleaning, tokenization, and lemmatization
+- **Multi-class Classification**: Supports 4 sentiment classes (Positive, Negative, Neutral, Irrelevant)
 
 **Implementation Details**:
-- Real-time model inference using cached models
-- Cosine similarity for finding similar content
-- Plotly for interactive visualizations
-- Background job processing for batch analysis
-- Report generation with charts and statistics
+- Fine-tuned DistilBERT model for sentiment classification
+- Gensim LDA model for topic modeling (15-20 topics)
+- Real-time preprocessing with NLTK TweetTokenizer
+- POS-tagged lemmatization for accurate text normalization
+- Model caching for fast inference
 
-**Output**: Interactive web dashboard, real-time predictions, trend charts, exportable reports
+**Output**: Interactive web dashboard with real-time sentiment and topic predictions
 
 ## 📈 Results & Performance
 
 ### Model Performance Metrics
 
-| Model | Accuracy | Precision | Recall | F1-Score |
-|-------|----------|-----------|--------|----------|
-| Logistic Regression (Baseline) | 0.XX | 0.XX | 0.XX | 0.XX |
-| Random Forest | 0.XX | 0.XX | 0.XX | 0.XX |
-| SVM (Linear) | 0.XX | 0.XX | 0.XX | 0.XX |
-| DistilBERT (Fine-tuned) | 0.XX | 0.XX | 0.XX | 0.XX |
-| LSTM | 0.XX | 0.XX | 0.XX | 0.XX |
-| CNN | 0.XX | 0.XX | 0.XX | 0.XX |
+Performance metrics are available in the `Complete_project.ipynb` notebook. The project includes:
 
-*Note: Replace XX with actual performance metrics after model training*
+- **Baseline Models**: TF-IDF + Logistic Regression, Random Forest, SVM
+- **Deep Learning Models**: Fine-tuned DistilBERT, LSTM, CNN
+- **Evaluation**: Stratified cross-validation with class imbalance handling
 
-### Key Insights
+### Generated Visualizations
 
-- **Sentiment Distribution**: [Add insights about sentiment distribution]
-- **Top Topics**: [List discovered topics]
-- **Temporal Patterns**: [Describe time-based trends]
-- **Geographic Insights**: [Location-based findings]
+The project generates several visualization files:
 
-## 🔧 Configuration
+- `sentiment_distribution.png` - Overall sentiment distribution
+- `sentiment_by_entity.png` - Sentiment breakdown by entity/brand
+- `entity_distribution.png` - Entity frequency analysis
+- `tweet_length_distribution.png` - Tweet length statistics
+- `top_mentions.png` - Most mentioned entities
+- `top_1_1grams_*.png` - Top unigrams for each sentiment class
+- `top_2_2grams_*.png` - Top bigrams for each sentiment class
 
-Create a `config.yaml` file to customize model parameters:
+### Saved Models
 
-```yaml
-preprocessing:
-  min_df: 2
-  max_df: 0.95
-  ngram_range: [1, 2]
-  
-models:
-  lda:
-    n_topics: 15
-  kmeans:
-    n_clusters: 10
-  random_forest:
-    n_estimators: 100
-    max_depth: 20
-  
-deep_learning:
-  batch_size: 32
-  learning_rate: 2e-5
-  epochs: 3
-```
+- `best_sentiment_classifier.pkl` - Best performing sentiment classifier
+- `gensim_lda_model.pkl` - Trained LDA topic model (15-20 topics)
+- `gensim_dictionary.pkl` - Gensim dictionary for topic modeling
+
+## 🔧 Model Files
+
+The project uses the following pre-trained models:
+
+- **Sentiment Classifier**: `best_sentiment_classifier.pkl` or `distilbert_sentiment_classifier.pt`
+- **Topic Model**: `gensim_lda_model.pkl` (Gensim LDA with 15-20 topics)
+- **Dictionary**: `gensim_dictionary.pkl` (Vocabulary for topic modeling)
+
+**Note**: For the Streamlit app to work, ensure these model files are in the root directory. The DistilBERT model file (`distilbert_sentiment_classifier.pt`) should be present for the app to load the fine-tuned transformer model.
 
 ## 🤝 Contributing
 
@@ -441,9 +377,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - **Dataset**: Twitter Sentiment Analysis Dataset
 - **Libraries**: 
-  - NLTK for natural language processing
-  - scikit-learn for machine learning
-  - Hugging Face Transformers for deep learning models
+  - NLTK for natural language processing and text preprocessing
+  - scikit-learn for machine learning models and evaluation
+  - Gensim for topic modeling (LDA)
+  - Hugging Face Transformers for DistilBERT fine-tuning
+  - PyTorch and TensorFlow for deep learning models
   - Streamlit for web application framework
-  - Plotly for interactive visualizations
-  - pyLDAvis for topic model visualization
+  - pyLDAvis for interactive topic model visualization
+  - imbalanced-learn for handling class imbalance
